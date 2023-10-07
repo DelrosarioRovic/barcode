@@ -32,7 +32,7 @@ router.post("/scan-product/:serialNumber", async (req, res) => {
       });
     }
 
-    if (foundProduct.status === "OUT") {
+    if (foundProduct.status === "out") {
       return res.status(400).json({ error: "This product is already out" });
     }
 
