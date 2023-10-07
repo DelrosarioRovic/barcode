@@ -9,6 +9,9 @@ const Navigation = () => {
       <li>
         <Link to={"/view-products"}>View Products</Link>
       </li>
+      <li>
+        <Link to={"/view-disburse-products"}>Disburse Products</Link>
+      </li>
     </ul>
   );
 };

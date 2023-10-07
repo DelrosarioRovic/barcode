@@ -9,6 +9,8 @@ const connectionDb = require("./connectionDb");
 const scanController = require("./controller/scan-controller");
 const distributorController = require("./controller/get-all-distributor");
 const disburseProductController = require("./controller/disburse-product");
+const getAllProduct = require("./controller/get-all-products");
+const getAllDisburseProduct = require("./controller/get-all-disburse-products");
 
 
 
@@ -63,6 +65,8 @@ app.get('/', (req, res) => {
 app.use('/product', scanController);
 app.use("/distributor", distributorController);
 app.use("/product", disburseProductController);
+app.use("/product", getAllProduct);
+app.use("/product", getAllDisburseProduct);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
