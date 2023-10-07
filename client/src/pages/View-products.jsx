@@ -75,6 +75,7 @@ export default function ViewProducts() {
       <h1 className="font-bold uppercase">List of Products</h1>
 
       <div className="flex justify-end items-center mt-3">
+        <label htmlFor="searchSerialNumber">Search</label>
         <input
           type="text"
           name="searchSerialNumber"

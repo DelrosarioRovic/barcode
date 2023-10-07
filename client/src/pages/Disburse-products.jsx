@@ -93,13 +93,21 @@ const DisburseProduct = () => {
             setSearch={setSearch}
             setSortType={setSortType}
           />
-          <input
-            type="text"
-            name="searchSerialNumber"
-            className="border rounded-sm ml-2 outline-blue-500 px-1"
-            value={search}
-            onChange={(e) => (setSearch(e.target.value), setSortType(true), setIsDefaultDate(false))}
-          />
+          <div>
+            <label htmlFor="search">Search</label>
+            <input
+              id="search"
+              type="text"
+              name="searchSerialNumber"
+              className="border rounded-sm ml-2 outline-blue-500 px-1"
+              value={search}
+              onChange={(e) => (
+                setSearch(e.target.value),
+                setSortType(true),
+                setIsDefaultDate(false)
+              )}
+            />
+          </div>
         </div>
         <div className="flex flex-col justify-between gap-5">
           <table className="w-full">
@@ -138,7 +146,9 @@ const DisburseProduct = () => {
                   <td
                     colSpan="5"
                     className="border-b border-l border-r border-gray-300 py-4 text-center"
-                  >No Result</td>
+                  >
+                    No Result
+                  </td>
                 </tr>
               )}
             </tbody>
