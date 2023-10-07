@@ -39,7 +39,7 @@ const Scan = ({
             {product.status}
           </td>
           {isScanSingle === "Many" && (
-            <td onClick={() => handleSubmitRemoveItem(product.serialNumber)} className="border border-black-500 border-collapse text-sm sm:text-base flex justify-center p-[5.1px]">
+            <td onClick={() => handleSubmitRemoveItem(product.serialNumber)} className="cursor-pointer border border-black-500 border-collapse text-sm sm:text-base flex justify-center p-[5.1px]">
               <BsFillTrashFill />
             </td>
           )}
