@@ -85,8 +85,9 @@ router.post("/disburse-product", async (req, res) => {
 
   await Product.updateMany(
     { _id: { $in: foundProductsMap } },
-    { $set: { status: "out" } }
+    { $set: { status: "out", distributor: distributorId } }
   );
+  
 
   const disburse = new DisburseProduct({
     products: foundProductsMap,

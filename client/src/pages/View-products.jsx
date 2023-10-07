@@ -15,7 +15,7 @@ export default function ViewProducts() {
   const [totalProducts, setTotalProducts] = useState();
   const [currentProductsPg, setCurrentProductsPg] = useState(0);
 
-  const headers = ["Serial Number", "SKU", "IMEI 1", "IMEI 2", "Status"];
+  const headers = ["Serial Number", "SKU", "IMEI 1", "IMEI 2", "Status", "Store Name"];
 
   const handleGetAllProducts = async () => {
     try {
@@ -86,7 +86,7 @@ export default function ViewProducts() {
       </div>
 
       <div className="flex flex-col p-5 bg-white rounded-md shadow-lg mt-3 min-w-[700px] h-[500px] justify-between">
-        <div>
+        <div className="flex flex-col gap-5">
           <div className="flex justify-end items-center">
             <div className="flex items-center">
               <p className="capitalize">sort</p>
@@ -139,6 +139,13 @@ export default function ViewProducts() {
                       }`}
                     >
                       {product.status}
+                    </td>
+                    <td
+                      className={`border-b border-l border-r border-gray-300 py-1 uppercase`}
+                    >
+                      {product.distributor
+                        ? product.distributor?.storeName
+                        : "N/A"}
                     </td>
                   </tr>
                 ))
