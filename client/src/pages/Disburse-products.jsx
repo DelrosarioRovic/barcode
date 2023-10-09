@@ -43,9 +43,11 @@ const DisburseProduct = () => {
           if (search === "") {
             return true;
           } else {
-            return product.distributor.storeName
-              .toLowerCase()
-              .includes(search.toLowerCase());
+            let storeNameNoSpaces = product.distributor.storeName
+              .replace(/\s/g, "")
+              .toLowerCase();
+            let searchQueryNoSpaces = search.replace(/\s/g, "").toLowerCase();
+            return storeNameNoSpaces.includes(searchQueryNoSpaces);
           }
         } else {
           if (isDefaultDate) {
