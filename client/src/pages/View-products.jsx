@@ -15,7 +15,14 @@ export default function ViewProducts() {
   const [totalProducts, setTotalProducts] = useState();
   const [currentProductsPg, setCurrentProductsPg] = useState(0);
 
-  const headers = ["Serial Number", "SKU", "IMEI 1", "IMEI 2", "Status", "Store Name"];
+  const headers = [
+    "Serial Number",
+    "SKU",
+    "IMEI 1",
+    "IMEI 2",
+    "Status",
+    "Store Name",
+  ];
 
   const handleGetAllProducts = async () => {
     try {
