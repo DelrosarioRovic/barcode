@@ -111,7 +111,7 @@ const DisburseProduct = () => {
             />
           </div>
         </div>
-        <div className="flex flex-col justify-between gap-5">
+        <div className="flex flex-col justify-between h-full gap-5">
           <table className="w-full">
             <Thead headers={headers} />
             <tbody className="text-sm">

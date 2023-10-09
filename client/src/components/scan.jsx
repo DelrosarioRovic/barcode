@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Scan = ({
-  isScanSingle,
   manyProducts,
   setManyProducts,
   selected,
@@ -14,7 +13,7 @@ const Scan = ({
   setErrorMessage,
   skuErrors,
   setSkuErrors,
-  setSerialNumber
+  setSerialNumber,
 }) => {
   const headers = ["Serial Number", "SKU", "IMEI 1", "IMEI 2", "Status"];
 
@@ -41,14 +40,12 @@ const Scan = ({
           <td className="border border-black-500 border-collapse text-sm sm:text-base">
             {product.status}
           </td>
-          {isScanSingle === "Many" && (
-            <td
-              onClick={() => handleSubmitRemoveItem(product.serialNumber)}
-              className="cursor-pointer border border-black-500 border-collapse text-sm sm:text-base flex justify-center p-[5.1px]"
-            >
-              <BsFillTrashFill />
-            </td>
-          )}
+          <td
+            onClick={() => handleSubmitRemoveItem(product.serialNumber)}
+            className="cursor-pointer border border-black-500 border-collapse text-sm sm:text-base flex justify-center p-[5.1px]"
+          >
+            <BsFillTrashFill />
+          </td>
         </tr>
       ));
     } else {
@@ -81,7 +78,7 @@ const Scan = ({
       setSerialNumber("");
       setManyProducts([]);
     } catch (error) {
-      console.log(error)
+      console.log(error);
       setError(true);
       setErrorMessage(error.response.data.error);
       const errors = error.response.data.error_sku;
