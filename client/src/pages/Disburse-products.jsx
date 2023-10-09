@@ -76,7 +76,7 @@ const DisburseProduct = () => {
 
   useEffect(() => {
     fetchAllDisburseProduct();
-  }, [search, startDate, sortType]);
+  }, [search, startDate, sortType, currentPage]);
 
   return (
     <div className="flex flex-col gap-10 justify-center items-center max-w-7xl p-5">

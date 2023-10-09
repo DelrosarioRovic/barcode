@@ -1,6 +1,8 @@
 import axios from "axios";
 import Thead from "./thead";
 import { BsFillTrashFill } from "react-icons/bs";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Scan = ({
   isScanSingle,
@@ -12,6 +14,7 @@ const Scan = ({
   setErrorMessage,
   skuErrors,
   setSkuErrors,
+  setSerialNumber
 }) => {
   const headers = ["Serial Number", "SKU", "IMEI 1", "IMEI 2", "Status"];
 
@@ -39,7 +42,10 @@ const Scan = ({
             {product.status}
           </td>
           {isScanSingle === "Many" && (
-            <td onClick={() => handleSubmitRemoveItem(product.serialNumber)} className="cursor-pointer border border-black-500 border-collapse text-sm sm:text-base flex justify-center p-[5.1px]">
+            <td
+              onClick={() => handleSubmitRemoveItem(product.serialNumber)}
+              className="cursor-pointer border border-black-500 border-collapse text-sm sm:text-base flex justify-center p-[5.1px]"
+            >
               <BsFillTrashFill />
             </td>
           )}
@@ -71,7 +77,11 @@ const Scan = ({
         distributorId: selected._id,
         shopifyProduct: shopifyProduct,
       });
+      toast.success(data.message);
+      setSerialNumber("");
+      setManyProducts([]);
     } catch (error) {
+      console.log(error)
       setError(true);
       setErrorMessage(error.response.data.error);
       const errors = error.response.data.error_sku;
@@ -82,13 +92,13 @@ const Scan = ({
   };
 
   const handleSubmitRemoveItem = (serialNumber) => {
-    const newManyProducts =  manyProducts.filter((product) => {
+    const newManyProducts = manyProducts.filter((product) => {
       if (product.serialNumber !== serialNumber) {
-        return product
+        return product;
       }
-    })
-    setManyProducts(newManyProducts)
-  }
+    });
+    setManyProducts(newManyProducts);
+  };
 
   return (
     <div className="flex flex-col w-1/2 p-5 bg-white rounded-md shadow-lg mt-5">

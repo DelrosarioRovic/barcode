@@ -60,6 +60,7 @@ router.post("/scan-product/:serialNumber", async (req, res) => {
     return res.status(200).json({
       foundProduct,
       foundShopifyProduct,
+      message: "Scan Successfully"
     });
   } catch (error) {
     console.log(error)

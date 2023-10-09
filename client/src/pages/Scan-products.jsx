@@ -2,8 +2,9 @@ import { useEffect, useState, useRef } from "react";
 import Scan from "../components/scan";
 import DistributorBox from "../components/DistributorBox";
 import ConfirmationBtn from "../components/ConfirmationBtn";
-import Thead from "../components/thead";
 import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ScanProduct = () => {
   const [serialNumber, setSerialNumber] = useState("");
@@ -18,7 +19,6 @@ const ScanProduct = () => {
   const [skuErrors, setSkuErrors] = useState([]);
 
   // Shopify Toast State
-  const [approvalToast, setApprovalToast] = useState(false);
   const [successScanToast, setSuccessScanToast] = useState(false);
   const inputRef = useRef();
 
@@ -39,6 +39,7 @@ const ScanProduct = () => {
           setShopifyProduct([data.foundShopifyProduct]);
           setSuccessScanToast(true);
           setError(false);
+          toast.success(data.message);
         } else if (
           isScanSingle === "Many" &&
           data.foundProduct.status === "in"
@@ -156,6 +157,7 @@ const ScanProduct = () => {
           </div>
         </div>
         <Scan
+          setSerialNumber={setSerialNumber}
           isScanSingle={isScanSingle}
           setError={setError}
           setErrorMessage={setErrorMessage}
