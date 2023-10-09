@@ -74,6 +74,7 @@ export default function ViewProducts() {
     if (allProducts.length < 11) {
       setCurrentPage(1);
     }
+    setCurrentPage(1);
     setSortValue(e.target.value);
   };
 
