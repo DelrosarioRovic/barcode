@@ -85,7 +85,7 @@ const DisburseProduct = () => {
       <div className="w-full text-left">
         <h1 className="font-bold">OUT PRODUCTS</h1>
       </div>
-      <div className="flex flex-col p-5 bg-white rounded-md shadow-lg mt-3 w-full min-w-[700px] h-[500px] gap-5">
+      <div className="flex flex-col p-5 bg-white rounded-md shadow-lg mt-3 w-full min-w-[700px] h-[520px] gap-5">
         <div className="flex justify-between items-center mt-3">
           <Calender
             startDate={startDate}

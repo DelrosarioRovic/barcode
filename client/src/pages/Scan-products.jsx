@@ -79,7 +79,7 @@ const ScanProduct = () => {
 
   return (
     <div>
-      <div className="w-full flex flex-col justify-center items-center min-h-screen bg-gray-100">
+      <div className="max-w-7xl flex flex-col justify-center items-center h-[700px]">
         <div className="flex flex-col items-center gap-5 justify-between w-1/2">
           <div className="flex flex-col gap-5 items-center p-5 bg-white rounded-md shadow-lg">
             <div className="flex justify-between items-center gap-5">

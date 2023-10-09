@@ -152,7 +152,7 @@ export default function ViewProducts() {
               ) : (
                 <tr>
                   <td
-                    colSpan="5"
+                    colSpan="6"
                     className="border-b border-l border-r border-gray-300 py-4 text-center"
                   >
                     {search
