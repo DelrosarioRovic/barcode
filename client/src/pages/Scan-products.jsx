@@ -27,47 +27,51 @@ const ScanProduct = () => {
   };
 
   useEffect(() => {
-    const handleScanProduct = async () => {
-      let url = `http://localhost:3000/product/scan-product/${serialNumber}`;
-      try {
-        const { data } = await axios.post(url);
+    // Check if the scan has already been performed
+    if (serialNumber && !successScanToast) {
+      const handleScanProduct = async () => {
+        try {
+          let url = `http://localhost:3000/product/scan-product/${serialNumber}`;
+          const { data } = await axios.post(url);
 
-        setManyProducts((prevProducts) => {
-          let matchFound = false;
-          for (let i = 0; i < prevProducts.length; i++) {
-            if (prevProducts[i].serialNumber === serialNumber) {
-              matchFound = true;
+          setManyProducts((prevProducts) => {
+            const isProductAlreadyScanned = prevProducts.some(
+              (product) => product.serialNumber === serialNumber
+            );
+
+            if (isProductAlreadyScanned) {
               setError(true);
               setErrorMessage("This product is already scanned");
-              break;
+              return prevProducts; // Return the unchanged state
+            } else {
+              toast.success(data.message);
+              setSuccessScanToast(true);
+              setError(false);
+              setSerialNumber("");
+              return [...prevProducts, data.foundProduct]; // Add new product to state
             }
-          }
-          if (!matchFound) {
-            setSuccessScanToast(true);
-            setError(false);
-            setSerialNumber("");
-            return [...prevProducts, data.foundProduct];
-          }
-          return prevProducts;
-        });
+          });
 
-        setShopifyProduct((prevProducts) => {
-          return [...prevProducts, data.foundShopifyProduct];
-        });
-      } catch (error) {
-        setError(true);
-        setErrorMessage(error.response.data.error);
-      }
-    };
+          setShopifyProduct((prevProducts) => [
+            ...prevProducts,
+            data.foundShopifyProduct,
+          ]);
+        } catch (error) {
+          setError(true);
+          setErrorMessage(error.response.data.error);
+        }
+      };
 
-    // Only scan for the product when a serial number is entered
-    if (serialNumber) {
+      // Call the handleScanProduct function only once
       handleScanProduct();
     }
-    if (serialNumber === "" && error === true) {
-      setError(false);
-    }
+
+    // Cleanup function to clear the successScanToast state after component unmounts
+    return () => {
+      setSuccessScanToast(false);
+    };
   }, [serialNumber]);
+
   // useEffect for Auto Focus in the input
   useEffect(() => {
     focusInput();
