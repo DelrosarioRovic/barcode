@@ -30,7 +30,7 @@ const Pagination = ({
   const hasPreviousPage = currentPage > 1;
 
   return (
-    <div className="flex justify-between mt-5 px-2">
+    <div className="flex justify-between">
       <div>
         <p className="bg-gray-300 text-gray-600 px-4 py-2 rounded-md">
           Showing {startRange} - {endRange} of {totalProducts} results | Page{" "}
