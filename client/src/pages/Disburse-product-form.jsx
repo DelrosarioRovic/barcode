@@ -39,7 +39,9 @@ const Disburse_product_form = () => {
           <div className="flex">
             <p className="border-b-2 border-black">
               Date proccess:{" "}
-              {moment(disburseProducts.date).format('MMMM D, YYYY / h:mm A')}
+              <span className="font-semibold">
+                {moment(disburseProducts.date).format("MMMM D, YYYY / h:mm A")}
+              </span>
             </p>
           </div>
 

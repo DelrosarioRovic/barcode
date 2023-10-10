@@ -3,12 +3,10 @@ import { Fragment, useState, useEffect } from "react";
 import { Combobox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import axios from "axios";
-import LinearSearch from "./linearSearch";
 
 export default function DistributorBox({
   selected,
   setSelected,
-  allProducts,
 }) {
   const [query, setQuery] = useState("");
   const [distributorAll, setDistributorAll] = useState([]);
@@ -37,15 +35,7 @@ export default function DistributorBox({
 
   useEffect(() => {
     getAllDistributor();
-    if (allProducts) {
-      if (selected) {
-        const filteredProduct = LinearSearch(
-          allProducts,
-          selected.storeName
-        );
-      }
-    }
-  }, [selected]);
+  }, []);
 
   return (
     <div className="w-72">
