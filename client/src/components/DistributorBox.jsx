@@ -41,9 +41,9 @@ export default function DistributorBox({
     <div className="w-72">
       <Combobox value={selected} onChange={setSelected}>
         <div className="relative mt-1">
-          <div className="relative w-full cursor-default rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-300 sm:text-sm">
+          <div className="relative w-full cursor-default rounded-lg bg-white text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-300 sm:text-sm">
             <Combobox.Input
-              className="w-full py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0 outline-1 outline-black"
+              className="w-full py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0 outline-1 outline-black border rounded-md"
               displayValue={(person) => person.storeName || defaultValue}
               onChange={(event) => setQuery(event.target.value)}
             />

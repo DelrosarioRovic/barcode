@@ -90,36 +90,41 @@ const ScanProduct = () => {
   return (
     <div>
       <div className="max-w-7xl flex flex-col items-center h-[700px]">
-        <div className="flex flex-col items-center gap-5 justify-between w-1/2">
-          <div className="flex flex-col gap-5 items-center p-5 bg-white rounded-md shadow-lg">
-            <div className="flex justify-between items-center gap-5">
-              <div className="flex gap-5 items-center">
-                <label htmlFor="serialNumber">Serial Number</label>
+        <div className="flex gap-5 justify-between w-3/4 ">
+          <div className="flex gap-2 flex-col p-5 w-1/2 shadow-lg">
+            <h1 className="font-semibold">DISTRIBUTOR</h1>
+            <DistributorBox selected={selected} setSelected={setSelected} />
+          </div>
+          <div className="flex flex-col gap-5 items-center p-5 bg-white rounded-md shadow-lg w-3/4">
+            <div className="flex flex-col justify-between items-center gap-2 w-full">
+              <div className="w-full text-left">
+                <label htmlFor="serialNumber" className="text-left font-semibold">
+                  SERIAL NUMBER
+                </label>
+              </div>
+
+              <div className="flex gap-5 items-center w-full justify-between">
                 <input
                   name="serialNumber"
-                  className={`${
+                  className={`w-3/4 ${
                     error ? "border-red-500 outline-red-500" : ""
-                  } px-5 py-2 border rounded-md mt-1 text-center`}
+                  } px-5 py-[0.4rem] border rounded-md mt-1 text-center`}
                   onChange={(e) => setSerialNumber(e.target.value)}
                   value={serialNumber}
                   ref={inputRef}
                 />
+                <button
+                  onClick={() => (setSerialNumber(""), focusInput())}
+                  className="px-3 py-1 bg-blue-500 rounded-md text-white"
+                >
+                  RESET
+                </button>
               </div>
-              <button
-                onClick={() => (setSerialNumber(""), focusInput())}
-                className="px-3 py-1 bg-blue-500 rounded-md text-white"
-              >
-                Reset
-              </button>
             </div>
 
             <div className="w-full h-[16px] text-center">
               {error && <p className="text-red-500">{errorMessage}</p>}
             </div>
-          </div>
-          <div className="flex gap-10">
-            <DistributorBox selected={selected} setSelected={setSelected} />
-            <div className=""></div>
           </div>
         </div>
         <Scan

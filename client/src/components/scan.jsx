@@ -106,7 +106,7 @@ const Scan = ({
   };
 
   return (
-    <div className="flex flex-col w-1/2 p-5 bg-white rounded-md shadow-lg mt-5">
+    <div className="flex flex-col w-full p-5 bg-white rounded-md shadow-lg mt-5">
       <table className="w-full">
         <Thead headers={headers} />
         <tbody className="text-sm">
