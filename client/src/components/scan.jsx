@@ -106,10 +106,10 @@ const Scan = ({
   };
 
   return (
-    <div className="flex flex-col w-full p-5 bg-white rounded-md shadow-lg mt-5">
+    <div className="flex flex-col w-full p-5 rounded-md shadow-components mt-5 bg-gray-100">
       <table className="w-full">
         <Thead headers={headers} />
-        <tbody className="text-sm">
+        <tbody className="text-sm h-[500px]">
           {loading ? (
             <tr>
               <LottieAnimation animationData={loadingLottie} id="loading" />
@@ -122,11 +122,11 @@ const Scan = ({
       <div className="flex w-full justify-end mt-5">
         <button
           onClick={handleSubmitSingleData}
-          className={`bg-blue-500 px-5 py-2 rounded-md hover:bg-blue-400 text-white ${
+          className={`gradientBtn font-bold px-10 py-3 rounded-md hover:bg-blue-400 text-white ${
             disburseLoading && "opacity-50"
           }`}
         >
-          Disburse Product
+          DISBURSE PRODUCT
         </button>
       </div>
     </div>
