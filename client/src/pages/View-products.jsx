@@ -110,9 +110,24 @@ export default function ViewProducts() {
                 onChange={handleSortValueChange}
                 className="border rounded-sm ml-2 outline-blue-500 px-1"
               >
-                <option value="all">All</option>
-                <option value="in">In</option>
-                <option value="out">Out</option>
+                <option
+                  className={`${sortValue === "all" && "bg-blue-500 text-white"}`}
+                  value="all"
+                >
+                  All
+                </option>
+                <option
+                  className={`${sortValue === "in" && "bg-blue-500 text-white"}`}
+                  value="in"
+                >
+                  In
+                </option>
+                <option
+                  className={`${sortValue === "out" && "bg-blue-500 text-white"}`}
+                  value="out"
+                >
+                  Out
+                </option>
               </select>
             </div>
           </div>
