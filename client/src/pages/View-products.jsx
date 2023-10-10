@@ -25,8 +25,8 @@ export default function ViewProducts() {
     "SKU",
     "IMEI 1",
     "IMEI 2",
-    "Status",
     "Store Name",
+    "Status",
   ];
 
   const handleGetAllProducts = async () => {
@@ -87,43 +87,46 @@ export default function ViewProducts() {
   };
 
   return (
-    <div className="p-5">
-      <h1 className="font-bold uppercase">List of Products</h1>
-      <div className="flex justify-end items-center mt-3">
-        <label htmlFor="searchSerialNumber">Search</label>
-        <input
-          type="text"
-          name="searchSerialNumber"
-          className="border rounded-sm ml-2 outline-blue-500 px-1"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </div>
-
-      <div className="flex flex-col p-5 bg-white rounded-md shadow-lg mt-3 min-w-[700px] h-[500px] justify-between">
-        <div className="flex flex-col gap-5">
+    <div className="">
+      <div className="flex items-center justify-between shadow-components rounded-lg p-5 bg-gray-100">
+        <h1 className="font-bold uppercase text-3xl">List of Products</h1>
+        <div className="flex justify-between items-center w-[60%]">
+          <input
+            placeholder="SERIAL NUMBER"
+            type="text"
+            name="searchSerialNumber"
+            className="px-5 py-[0.4rem] border-2 border-green-500 rounded-md text-center w-3/4"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
           <div className="flex justify-end items-center">
-            <div className="flex items-center">
-              <p className="capitalize">sort</p>
+            <div className="flex items-center gap-3">
+              <p className="capitalize font-bold text-xl">sort:</p>
               <select
                 value={sortValue}
                 onChange={handleSortValueChange}
-                className="border rounded-sm ml-2 outline-blue-500 px-1"
+                className="px-5 py-[0.4rem] border-2 border-green-500 rounded-md text-center"
               >
                 <option
-                  className={`${sortValue === "all" && "bg-blue-500 text-white"}`}
+                  className={`${
+                    sortValue === "all" && "bg-green-500 text-white"
+                  }`}
                   value="all"
                 >
                   All
                 </option>
                 <option
-                  className={`${sortValue === "in" && "bg-blue-500 text-white"}`}
+                  className={`${
+                    sortValue === "in" && "bg-green-500 text-white"
+                  }`}
                   value="in"
                 >
                   In
                 </option>
                 <option
-                  className={`${sortValue === "out" && "bg-blue-500 text-white"}`}
+                  className={`${
+                    sortValue === "out" && "bg-green-500 text-white"
+                  }`}
                   value="out"
                 >
                   Out
@@ -131,6 +134,11 @@ export default function ViewProducts() {
               </select>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="flex flex-col p-5 rounded-md shadow-components mt-3 min-w-[700px] h-[500px] justify-between bg-gray-100">
+        <div className="flex flex-col gap-5">
           {/* End of "status" sort combo box */}
 
           <table className="w-full h-full mt-5">
@@ -147,7 +155,7 @@ export default function ViewProducts() {
                     key={index}
                     className={`pt-5 cursor-pointer ${
                       index % 2 === 0 ? "bg-white" : "bg-gray-100"
-                    } hover:bg-gray-200 transition ease-in-out duration-200`}
+                    } hover:bg-gray-200 transition ease-in-out duration-200 font-semibold`}
                   >
                     <td className="border-b border-l border-r border-gray-300 py-1">
                       {product.serialNumber}
@@ -162,26 +170,18 @@ export default function ViewProducts() {
                       {product.imeiTwo}
                     </td>
                     <td
-                      className={`border-b border-l border-r border-gray-300 py-1 uppercase ${
-                        product.status === "in"
-                          ? "bg-green-500"
-                          : product.status === "out"
-                          ? "bg-red-300"
-                          : product.status === "pending"
-                          ? "bg-yellow-500"
-                          : product.status === "denied"
-                          ? "bg-red-500"
-                          : ""
-                      }`}
-                    >
-                      {product.status}
-                    </td>
-                    <td
                       className={`border-b border-l border-r border-gray-300 py-1 uppercase`}
                     >
                       {product.distributor
                         ? product.distributor?.storeName
                         : "N/A"}
+                    </td>
+                    <td
+                      className={`border-b border-l border-r border-gray-300 py-1 uppercase ${
+                        product.status === "in" ? "bg-green-500" : "bg-red-400"
+                      }`}
+                    >
+                      {product.status}
                     </td>
                   </tr>
                 ))

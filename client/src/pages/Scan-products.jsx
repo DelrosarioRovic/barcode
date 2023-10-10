@@ -90,12 +90,12 @@ const ScanProduct = () => {
   return (
     <div>
       <div className="max-w-7xl flex flex-col items-center h-[700px]">
-        <div className="flex gap-5 justify-between w-full items-center shadow-components rounded-lg bg-gray-100">
+        <div className="flex py-3 gap-5 justify-between w-full items-center shadow-components rounded-lg bg-gray-100">
           <div className="flex items-center gap-5 p-5 w-[40%]">
             <h1 className="font-bold">STORE NAME: </h1>
             <DistributorBox selected={selected} setSelected={setSelected} />
           </div>
-          <div className="flex flex-col gap-5 items-center p-5 rounded-md w-[60%]">
+          <div className="flex flex-col gap-5 items-center p-5 rounded-md w-[60%] relative">
             <div className="flex flex-col justify-between items-center gap-2 w-full">
               <div className="flex gap-5 items-center w-full justify-between">
                 <input
@@ -115,11 +115,12 @@ const ScanProduct = () => {
                   RESET
                 </button>
               </div>
+              <div className="h-[16px] text-left absolute bottom-0 left-10">
+                {error && (
+                  <p className="text-red-500">{`* ${errorMessage} *`}</p>
+                )}
+              </div>
             </div>
-{/* 
-            <div className="w-full h-[16px] text-center">
-              {error && <p className="text-red-500">{errorMessage}</p>}
-            </div> */}
           </div>
         </div>
         <Scan

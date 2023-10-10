@@ -106,10 +106,10 @@ const Scan = ({
   };
 
   return (
-    <div className="flex flex-col w-full p-5 rounded-md shadow-components mt-5 bg-gray-100">
+    <div className="flex flex-col w-full p-5 rounded-md shadow-components mt-3 bg-gray-100">
       <table className="w-full">
         <Thead headers={headers} />
-        <tbody className="text-sm h-[500px]">
+        <tbody className="text-sm h-[350px] min-h-[350px]">
           {loading ? (
             <tr>
               <LottieAnimation animationData={loadingLottie} id="loading" />

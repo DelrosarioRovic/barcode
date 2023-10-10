@@ -12,7 +12,7 @@ const Calender = ({
 }) => {
   const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
     <button
-      className="example-custom-input bg-blue-500 text-white px-3 py-1 rounded-sm"
+      className="example-custom-input gradientBtn text-white px-5 py-2 rounded-lg "
       onClick={onClick}
       ref={ref}
     >
@@ -22,6 +22,7 @@ const Calender = ({
 
   return (
     <DatePicker
+      className="absolute"
       selected={startDate}
       onChange={(date) => (
         setStartDate(date), setIsDefaultDate(true), setSortType(false), setSearch("")

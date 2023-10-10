@@ -89,37 +89,39 @@ const DisburseProduct = () => {
   }, [search, startDate, sortType, currentPage]);
 
   return (
-    <div className="flex flex-col gap-10 justify-center items-center max-w-7xl p-5">
-      <div className="w-full text-left">
-        <h1 className="font-bold">OUT PRODUCTS</h1>
-      </div>
-      <div className="flex flex-col p-5 bg-white rounded-md shadow-lg mt-3 w-full min-w-[700px] h-[500px] gap-5">
-        <div className="flex flex-col h-full gap-5">
-          <div className="flex justify-between items-center mt-3">
-            <Calender
-              startDate={startDate}
-              setStartDate={setStartDate}
-              isDefaultDate={isDefaultDate}
-              setIsDefaultDate={setIsDefaultDate}
-              setSearch={setSearch}
-              setSortType={setSortType}
-            />
+    <div className="flex flex-col justify-center items-center max-w-7xl">
+      <div className="w-full text-left shadow-components rounded-lg bg-gray-100">
+        <div className="flex justify-between items-center p-5">
+          <h1 className="font-bold text-3xl">OUT PRODUCTS</h1>
+          <div className="flex gap-10 items-center">
             <div>
-              <label htmlFor="search">Search</label>
-              <input
-                id="search"
-                type="text"
-                name="searchSerialNumber"
-                className="border rounded-sm ml-2 outline-blue-500 px-1"
-                value={search}
-                onChange={(e) => (
-                  setSearch(e.target.value),
-                  setSortType(true),
-                  setIsDefaultDate(false)
-                )}
+              <Calender
+                startDate={startDate}
+                setStartDate={setStartDate}
+                isDefaultDate={isDefaultDate}
+                setIsDefaultDate={setIsDefaultDate}
+                setSearch={setSearch}
+                setSortType={setSortType}
               />
             </div>
+            <input
+              id="search"
+              type="text"
+              name="searchSerialNumber"
+              placeholder="SERIAL NUMBER"
+              className="w-96 px-5 py-[0.4rem] border-2 border-green-500 rounded-md text-center "
+              value={search}
+              onChange={(e) => (
+                setSearch(e.target.value),
+                setSortType(true),
+                setIsDefaultDate(false)
+              )}
+            />
           </div>
+        </div>
+      </div>
+      <div className="flex flex-col p-5 rounded-md shadow-components bg-gray-100 mt-3 w-full min-w-[700px] h-[500px] gap-5">
+        <div className="flex flex-col h-full gap-5">
           <table className="w-full">
             <Thead headers={headers} />
             <tbody className="text-sm text-center">

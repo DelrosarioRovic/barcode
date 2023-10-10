@@ -2,13 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .gradientBtn {
-    background: linear-gradient(to left, #5aaa4f, #407939);
-  }
+  background: linear-gradient(to left, #5aaa4f, #407939);
+}
+
+.gradientBtnPrev {
+  background: linear-gradient(to left, #464646, #444444);
+  /* This creates a horizontal gradient from #464646 to #444444 */
+}
 
 .shadow-components {
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    border: 1px solid #F0F0F0;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border: 1px solid #f0f0f0;
 }
-  

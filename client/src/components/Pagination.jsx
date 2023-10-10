@@ -30,9 +30,9 @@ const Pagination = ({
   const hasPreviousPage = currentPage > 1;
 
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between items-center">
       <div>
-        <p className="bg-gray-300 text-gray-600 px-4 py-2 rounded-md">
+        <p className="gradientBtn text-white font-bold px-12 py-3 rounded-md text-xl">
           Showing {startRange} - {endRange} of {totalProducts} results | Page{" "}
           {currentPage}
         </p>
@@ -40,8 +40,8 @@ const Pagination = ({
       <div>
         <button
           className={`${
-            hasPreviousPage ? "bg-gray-300 hover:bg-gray-500" : "bg-gray-100"
-          } text-gray-600 px-4 py-2 rounded-l mr-1`}
+            hasPreviousPage ? "" : "bg-gray-100"
+          }  gradientBtnPrev px-10 py-3 rounded-lg mr-1 text-white font-bold text-xl`}
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={!hasPreviousPage}
         >
@@ -50,8 +50,8 @@ const Pagination = ({
 
         <button
           className={`${
-            hasNextPage ? "bg-gray-300 hover:bg-gray-500" : "bg-gray-100"
-          } text-gray-600 px-4 py-2 rounded-r ml-1`}
+            hasNextPage ? "" : "bg-gray-100"
+          } gradientBtn px-12 py-3 rounded-lg ml-1 text-white font-bold text-xl`}
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={!hasNextPage}
         >
