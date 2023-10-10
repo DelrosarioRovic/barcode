@@ -22,16 +22,16 @@ const port = 3000;
 connectionDb();
 
 // const data = [
-//     { serialNumber: '780376846306967', product_sku: 'SKU562', imeiOne: '1132', imeiTwo: '1344', status: 'in' },
-//     { serialNumber: '732182650880439', product_sku: 'SKU562', imeiOne: '1142', imeiTwo: '1243', status: 'in' },
-//     { serialNumber: '266392229786644', product_sku: 'SKU562', imeiOne: '1142', imeiTwo: '2443', status: 'in' },
-//     { serialNumber: '880050597884039', product_sku: 'SKU562', imeiOne: '1112', imeiTwo: '1247', status: 'in' },
-//     { serialNumber: '899709837531110', product_sku: 'SKU562', imeiOne: '1112', imeiTwo: '2245', status: 'in' },
-//     { serialNumber: '147626725932222', product_sku: 'SKU562', imeiOne: '1132', imeiTwo: '5348', status: 'in' },
-//     { serialNumber: '721982997400870', product_sku: 'SKU562', imeiOne: '1172', imeiTwo: '5443', status: 'in' },
-//     { serialNumber: '209184639633113', product_sku: 'SKU562', imeiOne: '1132', imeiTwo: '7840', status: 'in' },
-//     { serialNumber: '529375551508118', product_sku: 'SKU562', imeiOne: '1122', imeiTwo: '9242', status: 'in' },
-//     { serialNumber: '618953280483888', product_sku: 'SKU562', imeiOne: '1142', imeiTwo: '6749', status: 'in' }
+//     { serialNumber: '180376846306967', product_sku: 'SKU562', imeiOne: '1112', imeiTwo: '1344', status: 'in' },
+//     { serialNumber: '132182650880439', product_sku: 'SKU562', imeiOne: '1842', imeiTwo: '1643', status: 'in' },
+//     { serialNumber: '166392229786644', product_sku: 'SKU562', imeiOne: '1746', imeiTwo: '9443', status: 'in' },
+//     { serialNumber: '811050597884039', product_sku: 'SKU562', imeiOne: '1512', imeiTwo: '9247', status: 'in' },
+//     { serialNumber: '199709837531110', product_sku: 'SKU562', imeiOne: '1142', imeiTwo: '9245', status: 'in' },
+//     { serialNumber: '247626725932222', product_sku: 'SKU562', imeiOne: '1232', imeiTwo: '5948', status: 'in' },
+//     { serialNumber: '321982997400870', product_sku: 'SKU562', imeiOne: '1472', imeiTwo: '5943', status: 'in' },
+//     { serialNumber: '409184639633113', product_sku: 'SKU562', imeiOne: '1134', imeiTwo: '7940', status: 'in' },
+//     { serialNumber: '129375551508118', product_sku: 'SKU562', imeiOne: '1322', imeiTwo: '9292', status: 'in' },
+//     { serialNumber: '118953280483888', product_sku: 'SKU562', imeiOne: '1182', imeiTwo: '6949', status: 'in' }
 //   ];
 
 

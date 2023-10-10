@@ -26,7 +26,7 @@ const productSchema = new Schema({
   distributor: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Distributor",
-    required: true,
+    required: false,
   },
 });
 
