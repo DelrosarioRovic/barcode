@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import moment from "moment";
 import Pagination from "../components/Pagination";
 import Calender from "../components/Calendar";
+import LottieAnimation from "../components/Lottie-animation";
+import loadingLottie from "../assets/loading.json";
 
 const DisburseProduct = () => {
   const [disburse, setDisburse] = useState([]);
@@ -16,13 +18,16 @@ const DisburseProduct = () => {
   const [totalProducts, setTotalProducts] = useState();
   const [currentProductsPg, setCurrentProductsPg] = useState(0);
 
+  //loading
+  const [loading, setLoading] = useState(false);
+
   //type of search date or input store name
   const [sortType, setSortType] = useState(true);
   const navigate = useNavigate();
 
   const headers = [
     "STORE NAME",
-    "DATE",
+    "DATE & TIME",
     "EMAIL",
     "ADDRESS",
     "NUMBER OF PRODUCTS",
@@ -33,6 +38,7 @@ const DisburseProduct = () => {
   };
 
   const fetchAllDisburseProduct = async () => {
+    setLoading(true);
     try {
       let url = `http://localhost:3000/product/get-all-disburse-product/`;
       const { data } = await axios.get(url);
@@ -73,6 +79,8 @@ const DisburseProduct = () => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -114,8 +122,12 @@ const DisburseProduct = () => {
         <div className="flex flex-col justify-between h-full gap-5">
           <table className="w-full">
             <Thead headers={headers} />
-            <tbody className="text-sm">
-              {filterDisburse && filterDisburse.length > 0 ? (
+            <tbody className="text-sm text-center">
+              {loading ? (
+                <tr>
+                  <LottieAnimation animationData={loadingLottie} id="loading" />
+                </tr>
+              ) : filterDisburse && filterDisburse.length > 0 ? (
                 filterDisburse.map((disburse, index) => (
                   <tr
                     onClick={() => handleLinkClick(disburse._id)}
@@ -128,7 +140,7 @@ const DisburseProduct = () => {
                       {disburse.distributor.storeName}
                     </td>
                     <td className="border-b border-l border-r border-gray-300 py-1 px-5">
-                      {moment(disburse.date).format("YYYY-MM-DD")}
+                      {moment(disburse.date).format("MMMM D, YYYY / h:mm A")}
                     </td>
                     <td className="border-b border-l border-r border-gray-300 py-1 px-5">
                       {disburse.distributor.email}

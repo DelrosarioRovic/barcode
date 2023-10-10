@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Pagination from "../components/Pagination";
 import Thead from "../components/thead";
+import LottieAnimation from "../components/Lottie-animation";
+import loadingLottie from "../assets/loading.json";
 
 export default function ViewProducts() {
   const [search, setSearch] = useState("");
@@ -15,6 +17,9 @@ export default function ViewProducts() {
   const [totalProducts, setTotalProducts] = useState();
   const [currentProductsPg, setCurrentProductsPg] = useState(0);
 
+  //loading
+  const [loading, setLoading] = useState(false);
+
   const headers = [
     "Serial Number",
     "SKU",
@@ -25,6 +30,7 @@ export default function ViewProducts() {
   ];
 
   const handleGetAllProducts = async () => {
+    setLoading(true);
     try {
       const { data } = await axios.get(
         `http://localhost:3000/product/get-all-product`
@@ -63,6 +69,8 @@ export default function ViewProducts() {
       }
     } catch (err) {
       console.log(err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -81,7 +89,6 @@ export default function ViewProducts() {
   return (
     <div className="p-5">
       <h1 className="font-bold uppercase">List of Products</h1>
-
       <div className="flex justify-end items-center mt-3">
         <label htmlFor="searchSerialNumber">Search</label>
         <input
@@ -110,10 +117,16 @@ export default function ViewProducts() {
             </div>
           </div>
           {/* End of "status" sort combo box */}
+
           <table className="w-full h-full mt-5">
             <Thead headers={headers} />
+
             <tbody className="text-sm text-center">
-              {filterProducts && filterProducts.length > 0 ? (
+              {loading ? (
+                <tr className="">
+                  <LottieAnimation animationData={loadingLottie} id="loading" />
+                </tr>
+              ) : filterProducts && filterProducts.length > 0 ? (
                 filterProducts.map((product, index) => (
                   <tr
                     key={index}

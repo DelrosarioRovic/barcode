@@ -3,14 +3,19 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
 import Thead from "../components/thead";
+import LottieAnimation from "../components/Lottie-animation";
+import loadingLottie from "../assets/loading.json";
 
 const Disburse_product_form = () => {
   const { refference } = useParams();
   const [disburseProducts, setDisburseProducts] = useState({});
+  //loading
+  const [loading, setLoading] = useState(false);
 
   const headers = ["Serial Number", "SKU", "IMEI 1", "IMEI 2", "Status"];
 
   const fetchDisburseProduct = async () => {
+    setLoading(true);
     try {
       let url = `http://localhost:3000/product/get-single-disburse-product/${refference}`;
       const { data } = await axios.get(url);
@@ -18,6 +23,8 @@ const Disburse_product_form = () => {
       setDisburseProducts(data.singleDisburse[0]);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -28,11 +35,11 @@ const Disburse_product_form = () => {
   return (
     <div>
       {disburseProducts ? (
-        <div className="shadow-xl max-w-7xl rounded-xl p-5 flex flex-col gap-10">
+        <div className="shadow-xl max-w-7xl rounded-xl p-5 flex flex-col gap-10 min-w-[700px] ">
           <div className="flex">
             <p className="border-b-2 border-black">
               Date proccess:{" "}
-              {moment(disburseProducts.date).format("YYYY-MM-DD")}
+              {moment(disburseProducts.date).format('MMMM D, YYYY / h:mm A')}
             </p>
           </div>
 
@@ -59,9 +66,13 @@ const Disburse_product_form = () => {
           </div>
           <table>
             <Thead headers={headers} />
-            <tbody>
-              {Array.isArray(disburseProducts.products) &&
-              disburseProducts.products.length > 0 ? (
+            <tbody className="text-center">
+              {loading ? (
+                <tr>
+                  <LottieAnimation animationData={loadingLottie} id="loading" />
+                </tr>
+              ) : Array.isArray(disburseProducts.products) &&
+                disburseProducts.products.length > 0 ? (
                 disburseProducts.products.map((product, key) => (
                   <tr key={key}>
                     <td className="border-b border-l border-r border-gray-300 py-1 px-5">
@@ -76,7 +87,7 @@ const Disburse_product_form = () => {
                     <td className="border-b border-l border-r border-gray-300 py-1 px-5">
                       {product.imeiTwo}
                     </td>
-                    <td className="border-b border-l border-r border-gray-300 py-1 px-5">
+                    <td className="border-b border-l border-r border-gray-300 py-1 px-5 bg-red-300">
                       {product.status}
                     </td>
                   </tr>

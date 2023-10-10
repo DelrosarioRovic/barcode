@@ -15,6 +15,9 @@ const ScanProduct = () => {
   //will check the error of the sku that surpass the quantity of the specific products
   const [skuErrors, setSkuErrors] = useState([]);
 
+  //loading
+  const [loading, setLoading] = useState(false);
+
   // Shopify Toast State
   const [successScanToast, setSuccessScanToast] = useState(false);
   const inputRef = useRef();
@@ -28,8 +31,9 @@ const ScanProduct = () => {
 
   useEffect(() => {
     // Check if the scan has already been performed
-    if (serialNumber && !successScanToast) {
-      const handleScanProduct = async () => {
+    const handleScanProduct = async () => {
+      if (serialNumber && !successScanToast) {
+        setLoading(true);
         try {
           let url = `http://localhost:3000/product/scan-product/${serialNumber}`;
           const { data } = await axios.post(url);
@@ -44,7 +48,6 @@ const ScanProduct = () => {
               setErrorMessage("This product is already scanned");
               return prevProducts; // Return the unchanged state
             } else {
-              toast.success(data.message);
               setSuccessScanToast(true);
               setError(false);
               setSerialNumber("");
@@ -59,12 +62,19 @@ const ScanProduct = () => {
         } catch (error) {
           setError(true);
           setErrorMessage(error.response.data.error);
+        } finally {
+          setSuccessScanToast(false);
+          setLoading(false);
         }
-      };
+      }
+    };
 
-      // Call the handleScanProduct function only once
-      handleScanProduct();
+    if (serialNumber === "") {
+      setError(false);
     }
+
+    // Call the handleScanProduct function only once
+    handleScanProduct();
 
     // Cleanup function to clear the successScanToast state after component unmounts
     return () => {
@@ -79,7 +89,7 @@ const ScanProduct = () => {
 
   return (
     <div>
-      <div className="max-w-7xl flex flex-col justify-center items-center h-[700px]">
+      <div className="max-w-7xl flex flex-col items-center h-[700px]">
         <div className="flex flex-col items-center gap-5 justify-between w-1/2">
           <div className="flex flex-col gap-5 items-center p-5 bg-white rounded-md shadow-lg">
             <div className="flex justify-between items-center gap-5">
@@ -96,14 +106,16 @@ const ScanProduct = () => {
                 />
               </div>
               <button
-                onClick={() => setSerialNumber("")}
+                onClick={() => (setSerialNumber(""), focusInput())}
                 className="px-3 py-1 bg-blue-500 rounded-md text-white"
               >
                 Reset
               </button>
             </div>
 
-            <div>{error && <p className="text-red-500">{errorMessage}</p>}</div>
+            <div className="w-full h-[16px] text-center">
+              {error && <p className="text-red-500">{errorMessage}</p>}
+            </div>
           </div>
           <div className="flex gap-10">
             <DistributorBox selected={selected} setSelected={setSelected} />
@@ -120,6 +132,7 @@ const ScanProduct = () => {
           shopifyProduct={shopifyProduct}
           skuErrors={skuErrors}
           setSkuErrors={setSkuErrors}
+          loading={loading}
         />
       </div>
     </div>

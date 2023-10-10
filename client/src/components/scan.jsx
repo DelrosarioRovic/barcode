@@ -3,6 +3,9 @@ import Thead from "./thead";
 import { BsFillTrashFill } from "react-icons/bs";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import LottieAnimation from "../components/Lottie-animation";
+import loadingLottie from "../assets/loading.json";
+import { useState } from "react";
 
 const Scan = ({
   manyProducts,
@@ -14,8 +17,10 @@ const Scan = ({
   skuErrors,
   setSkuErrors,
   setSerialNumber,
+  loading,
 }) => {
   const headers = ["Serial Number", "SKU", "IMEI 1", "IMEI 2", "Status"];
+  const [disburseLoading, setDisburseSetLoading] = useState(false);
 
   const renderTableRows = () => {
     if (manyProducts.length > 0) {
@@ -64,6 +69,7 @@ const Scan = ({
 
   //function to fetch data from the backend to disburse product
   const handleSubmitSingleData = async () => {
+    setDisburseSetLoading(true);
     const manyProd = manyProducts.map((product) => ({
       serialNumber: product.serialNumber,
     }));
@@ -85,6 +91,8 @@ const Scan = ({
       if (errors && errors.length > 0) {
         setSkuErrors(error.response.data.error_sku);
       }
+    } finally {
+      setDisburseSetLoading(false);
     }
   };
 
@@ -101,12 +109,22 @@ const Scan = ({
     <div className="flex flex-col w-1/2 p-5 bg-white rounded-md shadow-lg mt-5">
       <table className="w-full">
         <Thead headers={headers} />
-        <tbody className="text-sm">{renderTableRows()}</tbody>
+        <tbody className="text-sm">
+          {loading ? (
+            <tr>
+              <LottieAnimation animationData={loadingLottie} id="loading" />
+            </tr>
+          ) : (
+            renderTableRows()
+          )}
+        </tbody>
       </table>
       <div className="flex w-full justify-end mt-5">
         <button
           onClick={handleSubmitSingleData}
-          className="bg-blue-500 px-5 py-2 rounded-md hover:bg-blue-400 text-white"
+          className={`bg-blue-500 px-5 py-2 rounded-md hover:bg-blue-400 text-white ${
+            disburseLoading && "opacity-50"
+          }`}
         >
           Disburse Product
         </button>
