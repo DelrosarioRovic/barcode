@@ -35,7 +35,7 @@ const Disburse_product_form = () => {
   return (
     <div>
       {disburseProducts ? (
-        <div className="shadow-xl max-w-7xl rounded-xl p-5 flex flex-col gap-10 min-w-[700px] ">
+        <div className="shadow-components max-w-7xl rounded-xl p-5 flex flex-col gap-10 min-w-[700px] min-h-[500px] bg-gray-100">
           <div className="flex">
             <p className="border-b-2 border-black">
               Date proccess:{" "}

@@ -136,7 +136,7 @@ const DisburseProduct = () => {
                     key={index}
                     className={`pt-5 cursor-pointer ${
                       index % 2 === 0 ? "bg-white" : "bg-gray-100"
-                    } hover:bg-gray-200 transition ease-in-out duration-200`}
+                    } hover:bg-gray-200 transition ease-in-out duration-200 font-semibold`}
                   >
                     <td className="border-b border-l border-r border-gray-300 py-1 px-5">
                       {disburse.distributor.storeName}
