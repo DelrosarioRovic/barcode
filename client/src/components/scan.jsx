@@ -25,7 +25,7 @@ const Scan = ({
   const renderTableRows = () => {
     if (manyProducts.length > 0) {
       return manyProducts.map((product, index) => (
-        <tr className="text-center" key={index}>
+        <tr className="text-center h-[20px]" key={index}>
           <td className="border border-black-500 border-collapse text-sm sm:text-base">
             {product.serialNumber}
           </td>

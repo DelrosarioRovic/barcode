@@ -22,7 +22,6 @@ const Calender = ({
 
   return (
     <DatePicker
-      className="absolute"
       selected={startDate}
       onChange={(date) => (
         setStartDate(date), setIsDefaultDate(true), setSortType(false), setSearch("")

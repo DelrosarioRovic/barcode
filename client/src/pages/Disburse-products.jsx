@@ -88,6 +88,7 @@ const DisburseProduct = () => {
     fetchAllDisburseProduct();
   }, [search, startDate, sortType, currentPage]);
 
+  console.log(filterDisburse)
   return (
     <div className="flex flex-col justify-center items-center max-w-7xl">
       <div className="w-full text-left shadow-components rounded-lg bg-gray-100">
@@ -121,7 +122,7 @@ const DisburseProduct = () => {
         </div>
       </div>
       <div className="flex flex-col p-5 rounded-md shadow-components bg-gray-100 mt-3 w-full min-w-[700px] h-[500px] gap-5">
-        <div className="flex flex-col h-full gap-5">
+        <div className="flex flex-col h-full gap-5 mt-3">
           <table className="w-full">
             <Thead headers={headers} />
             <tbody className="text-sm text-center">
