@@ -32,7 +32,7 @@ const Pagination = ({
   return (
     <div className="flex justify-between items-center">
       <div>
-        <p className="gradientBtn text-white font-bold px-12 py-3 rounded-md text-xl">
+        <p className="bg-green-600 text-white font-bold px-12 py-3 rounded-md text-xl uppercase">
           Showing {startRange} - {endRange} of {totalProducts} results | Page{" "}
           {currentPage}
         </p>
