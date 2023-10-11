@@ -4,6 +4,7 @@ import LottieAnimation from "../components/Lottie-animation";
 import loadingLottie from "../assets/loading.json";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import AddNewDistributorContainer from "../components/Add-new-distributor-form";
 
 const Distributor = () => {
   const [distributor, setDistributor] = useState([]);
@@ -12,6 +13,8 @@ const Distributor = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalProducts, setTotalProducts] = useState(0);
   const [currentProductsPg, setCurrentProductsPg] = useState(0);
+
+  const [isShowForm, setIsShowForm] = useState(false);
 
   const headers = [
     "STORE NAME",
@@ -64,7 +67,10 @@ const Distributor = () => {
           />
           <div className="flex justify-end items-center">
             <div className="flex items-center gap-3">
-              <button className="gradientBtn px-8 py-3 rounded-lg text-white font-bold">
+              <button
+                className="gradientBtn px-8 py-3 rounded-lg text-white font-bold"
+                onClick={() => setIsShowForm(true)}
+              >
                 ADD NEW
               </button>
             </div>
@@ -136,6 +142,7 @@ const Distributor = () => {
         />
         {/* End of pagination */}
       </div>
+      {isShowForm && <AddNewDistributorContainer setIsShowForm={setIsShowForm}/>}
     </div>
   );
 };

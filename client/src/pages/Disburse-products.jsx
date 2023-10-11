@@ -1,15 +1,16 @@
 import Thead from "../components/thead";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import moment from "moment";
 import Pagination from "../components/Pagination";
 import Calender from "../components/Calendar";
 import LottieAnimation from "../components/Lottie-animation";
 import loadingLottie from "../assets/loading.json";
+import Disburse_product_form from "../components/Disburse-product-form";
 
 const DisburseProduct = () => {
   const [disburse, setDisburse] = useState([]);
+  const [disbursementId, setDisbursementId] = useState("");
   const [startDate, setStartDate] = useState(new Date());
   const [isDefaultDate, setIsDefaultDate] = useState(false);
   const [filterDisburse, setFilterDisburse] = useState([]);
@@ -23,8 +24,6 @@ const DisburseProduct = () => {
 
   //type of search date or input store name
   const [sortType, setSortType] = useState(true);
-  const navigate = useNavigate();
-
   const headers = [
     "STORE NAME",
     "DATE & TIME",
@@ -34,7 +33,7 @@ const DisburseProduct = () => {
   ];
 
   const handleLinkClick = (disburseId) => {
-    navigate(`/view-disburse-products/${disburseId}`);
+    setDisbursementId(disburseId);
   };
 
   const fetchAllDisburseProduct = async () => {
@@ -87,7 +86,6 @@ const DisburseProduct = () => {
   useEffect(() => {
     fetchAllDisburseProduct();
   }, [search, startDate, sortType, currentPage]);
-
 
   return (
     <div className="flex flex-col justify-center items-center max-w-7xl">
@@ -181,6 +179,12 @@ const DisburseProduct = () => {
           />
         </div>
       </div>
+      {disbursementId && (
+        <Disburse_product_form
+          disbursementId={disbursementId}
+          setDisbursementId={setDisbursementId}
+        />
+      )}
     </div>
   );
 };

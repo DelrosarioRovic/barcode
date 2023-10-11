@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
-import Thead from "../components/thead";
-import LottieAnimation from "../components/Lottie-animation";
+import Thead from "./thead";
+import LottieAnimation from "./Lottie-animation";
 import loadingLottie from "../assets/loading.json";
+import { IoClose } from "react-icons/io5";
 
-const Disburse_product_form = () => {
-  const { refference } = useParams();
+const Disburse_product_form = ({ disbursementId, setDisbursementId }) => {
   const [disburseProducts, setDisburseProducts] = useState({});
   //loading
   const [loading, setLoading] = useState(false);
@@ -17,7 +17,7 @@ const Disburse_product_form = () => {
   const fetchDisburseProduct = async () => {
     setLoading(true);
     try {
-      let url = `http://localhost:3000/product/get-single-disburse-product/${refference}`;
+      let url = `http://localhost:3000/product/get-single-disburse-product/${disbursementId}`;
       const { data } = await axios.get(url);
 
       setDisburseProducts(data.singleDisburse[0]);
@@ -33,16 +33,22 @@ const Disburse_product_form = () => {
   }, []);
 
   return (
-    <div>
+    <div className="w-full h-full absolute inset-0 flex justify-center items-center bg-black bg-opacity-40 backdrop-blur-[2px]">
       {disburseProducts ? (
         <div className="shadow-components max-w-7xl rounded-xl p-5 flex flex-col gap-10 min-w-[700px] min-h-[500px] bg-gray-100">
-          <div className="flex">
+          <div className="flex justify-between items-center">
             <p className="border-b-2 border-black">
               Date proccess:{" "}
               <span className="font-semibold">
                 {moment(disburseProducts.date).format("MMMM D, YYYY / h:mm A")}
               </span>
             </p>
+            <button
+              className="gradientBtn text-white px-2 py-1 rounded-md"
+              onClick={() => setDisbursementId("")}
+            >
+              <IoClose size={24}/>
+            </button>
           </div>
 
           <div>
