@@ -3,7 +3,7 @@ import barcodeImg from "../assets/barcode.svg";
 const AddNewDistributorContainer = ({ setIsShowForm }) => {
   return (
     <div className="w-full h-full absolute inset-0 flex justify-center items-center bg-black bg-opacity-40 backdrop-blur-[2px]">
-      <div className="flex flex-col bg-white p-5 rounded-lg w-[45rem] gap-14">
+      <div className="flex flex-col bg-white p-10 rounded-lg w-[50rem] gap-14">
         <div className="flex items-center justify-start gap-3">
           <img src={barcodeImg} alt="" />
           <h1 className="font-black text-xl">BARCODE SCANNER</h1>
