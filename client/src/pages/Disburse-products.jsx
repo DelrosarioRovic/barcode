@@ -88,7 +88,7 @@ const DisburseProduct = () => {
     fetchAllDisburseProduct();
   }, [search, startDate, sortType, currentPage]);
 
-  console.log(filterDisburse)
+
   return (
     <div className="flex flex-col justify-center items-center max-w-7xl">
       <div className="w-full text-left shadow-components rounded-lg bg-gray-100">

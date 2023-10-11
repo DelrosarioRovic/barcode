@@ -22,6 +22,7 @@ const Distributor = () => {
   ];
 
   const getAllDistributor = async () => {
+    setLoading(true);
     try {
       const url = "http://localhost:3000/distributor/get-distributor";
       const { data } = await axios.get(url);
@@ -39,6 +40,8 @@ const Distributor = () => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
