@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import lottie from "lottie-web";
 
-const LottieAnimation = ({ animationData, id }) => {
+const LottieAnimation = ({ animationData, id, height }) => {
   useEffect(() => {
     // Define a ref to the DOM element where you want to render the animation
     const container = document.getElementById(id);
@@ -21,7 +21,7 @@ const LottieAnimation = ({ animationData, id }) => {
     };
   }, [animationData]);
 
-  return <td className="h-[200px]" id={id} colSpan="6"></td>;
+  return <td className={height} id={id} colSpan="6"></td>;
 };
 
 export default LottieAnimation;

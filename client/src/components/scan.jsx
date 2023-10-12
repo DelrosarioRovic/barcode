@@ -112,7 +112,11 @@ const Scan = ({
         <tbody className="text-sm h-[350px] min-h-[350px]">
           {loading ? (
             <tr>
-              <LottieAnimation animationData={loadingLottie} id="loading" />
+              <LottieAnimation
+                animationData={loadingLottie}
+                id="loading"
+                height="h-[200px]"
+              />
             </tr>
           ) : (
             renderTableRows()
@@ -123,10 +127,21 @@ const Scan = ({
         <button
           onClick={handleSubmitSingleData}
           className={`gradientBtn font-bold px-10 py-3 rounded-md hover:bg-blue-400 text-white ${
-            disburseLoading && "opacity-50"
+            disburseLoading && "px-9"
           }`}
         >
-          DISBURSE PRODUCT
+          {disburseLoading ? (
+            <div className="flex items-center h-6">
+              <LottieAnimation
+                animationData={loadingLottie}
+                id="loading"
+                height="h-[70px] -ml-5"
+              />
+              <p className="">PROCESSING...</p>
+            </div>
+          ) : (
+            "DISBURSE PRODUCT"
+          )}
         </button>
       </div>
     </div>

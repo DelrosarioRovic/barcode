@@ -88,7 +88,11 @@ const Distributor = () => {
             <tbody className="text-sm text-center">
               {loading ? (
                 <tr className="">
-                  <LottieAnimation animationData={loadingLottie} id="loading" />
+                  <LottieAnimation
+                    animationData={loadingLottie}
+                    id="loading"
+                    height="h-[200px]"
+                  />
                 </tr>
               ) : distributor && distributor.length > 0 ? (
                 distributor.map((distributor, index) => (
@@ -142,7 +146,9 @@ const Distributor = () => {
         />
         {/* End of pagination */}
       </div>
-      {isShowForm && <AddNewDistributorContainer setIsShowForm={setIsShowForm}/>}
+      {isShowForm && (
+        <AddNewDistributorContainer setIsShowForm={setIsShowForm} />
+      )}
     </div>
   );
 };

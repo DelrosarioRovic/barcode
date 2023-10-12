@@ -20,6 +20,9 @@ const AddNewDistributorContainer = ({ setIsShowForm }) => {
         contactPerson,
         contactNumber,
       });
+      if (data.status === 200) {
+        setIsShowForm(false);
+      }
       console.log(data);
     } catch (error) {
       console.log(error);
@@ -48,6 +51,7 @@ const AddNewDistributorContainer = ({ setIsShowForm }) => {
                   value={distributorName}
                   type="text"
                   className="w-[70%] outline-1 outline outline-green-400 rounded-md p-2"
+                  required
                 />
               </div>
               <div className="flex gap-3 justify-between items-center">
@@ -59,6 +63,7 @@ const AddNewDistributorContainer = ({ setIsShowForm }) => {
                   value={address}
                   name="address"
                   className="w-[70%] outline-1 outline outline-green-400 rounded-md p-2"
+                  required
                 ></textarea>
               </div>
               <div className="flex gap-3 justify-between items-center">
@@ -68,8 +73,9 @@ const AddNewDistributorContainer = ({ setIsShowForm }) => {
                 <input
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
-                  type="text"
+                  type="email"
                   className="w-[70%] outline-1 outline outline-green-400 rounded-md p-2"
+                  required
                 />
               </div>
             </div>
@@ -83,6 +89,7 @@ const AddNewDistributorContainer = ({ setIsShowForm }) => {
                   value={contactPerson}
                   type="text"
                   className="w-[70%] outline-1 outline outline-green-400 rounded-md p-2"
+                  required
                 />
               </div>
               <div className="flex gap-3 justify-between items-center">
@@ -94,6 +101,7 @@ const AddNewDistributorContainer = ({ setIsShowForm }) => {
                   value={contactNumber}
                   type="text"
                   className="w-[70%] outline-1 outline outline-green-400 rounded-md p-2"
+                  required
                 />
               </div>
               <div className="flex gap-5 justify-end">

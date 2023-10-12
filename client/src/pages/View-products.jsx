@@ -147,7 +147,11 @@ export default function ViewProducts() {
             <tbody className="text-sm text-center">
               {loading ? (
                 <tr className="">
-                  <LottieAnimation animationData={loadingLottie} id="loading" />
+                  <LottieAnimation
+                    animationData={loadingLottie}
+                    id="loading"
+                    height="h-[200px]"
+                  />
                 </tr>
               ) : filterProducts && filterProducts.length > 0 ? (
                 filterProducts.map((product, index) => (

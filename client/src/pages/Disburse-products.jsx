@@ -126,7 +126,11 @@ const DisburseProduct = () => {
             <tbody className="text-sm text-center">
               {loading ? (
                 <tr>
-                  <LottieAnimation animationData={loadingLottie} id="loading" />
+                  <LottieAnimation
+                    animationData={loadingLottie}
+                    id="loading"
+                    height="h-[200px]"
+                  />
                 </tr>
               ) : filterDisburse && filterDisburse.length > 0 ? (
                 filterDisburse.map((disburse, index) => (
